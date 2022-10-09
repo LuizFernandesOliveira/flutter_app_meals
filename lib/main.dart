@@ -9,8 +9,16 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          fontFamily: 'Raleway',
+          colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.pink)
+              .copyWith(secondary: Colors.amber),
+          textTheme: ThemeData.light().textTheme.copyWith(
+                titleMedium: const TextStyle(
+                  fontSize: 20,
+                  fontFamily: 'RobotoCondensed',
+                ),
+              ),
+          canvasColor: const Color.fromRGBO(255, 254, 229, 1)),
       home: CategoryListScreen(),
     );
   }
