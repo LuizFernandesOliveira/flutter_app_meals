@@ -1,5 +1,9 @@
 enum CostType {
-  Cheap,
-  Fair,
-  Expensive,
+  Cheap('Barato'),
+  Fair('Justo'),
+  Expensive('Caro');
+
+  const CostType(this.description);
+
+  final String description;
 }
