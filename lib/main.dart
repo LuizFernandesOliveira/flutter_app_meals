@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'screens/category_list_screen.dart';
 import 'screens/meal_list_screen.dart';
 import 'utils/app_routes.dart';
+import 'screens/tabs_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
               ),
           canvasColor: const Color.fromRGBO(255, 254, 229, 1)),
       routes: {
-        AppRoutes.HOME: (ctx) => CategoryListScreen(),
+        AppRoutes.HOME: (ctx) => TabsScreen(),
         AppRoutes.MEALS: (ctx) => MealListScreen(),
         AppRoutes.MEALS_DETAIL: (ctx) => MealDetailScreen(),
       },
