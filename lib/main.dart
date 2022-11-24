@@ -16,16 +16,21 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Settings settings = Settings();
   List<Meal> _availableMeals = dummyMeals;
 
   void _filterMeals(Settings settings) {
     setState(() {
+      this.settings = settings;
       _availableMeals = dummyMeals.where((meal) {
         final filterGluten = settings.isGlutenFree && !meal.isGlutenFree;
         final filterLactose = settings.isLactoseFree && !meal.isLactoseFree;
         final filterVegan = settings.isVegan && !meal.isVegan;
         final filterVegetarian = settings.isVegetarian && !meal.isVegetarian;
-        return !filterGluten && !filterLactose && !filterVegan && !filterVegetarian;
+        return !filterGluten &&
+            !filterLactose &&
+            !filterVegan &&
+            !filterVegetarian;
       }).toList();
     });
   }
@@ -47,9 +52,14 @@ class _MyAppState extends State<MyApp> {
           canvasColor: const Color.fromRGBO(255, 254, 229, 1)),
       routes: {
         AppRoutes.HOME: (ctx) => TabsScreen(),
-        AppRoutes.MEALS: (ctx) => MealListScreen(meals: _availableMeals,),
+        AppRoutes.MEALS: (ctx) => MealListScreen(
+              meals: _availableMeals,
+            ),
         AppRoutes.MEALS_DETAIL: (ctx) => MealDetailScreen(),
-        AppRoutes.SETTINGS: (ctx) => SettingsScreen(onSettingsChange: _filterMeals),
+        AppRoutes.SETTINGS: (ctx) => SettingsScreen(
+              settings: settings,
+              onSettingsChange: _filterMeals,
+            ),
       },
     );
   }
